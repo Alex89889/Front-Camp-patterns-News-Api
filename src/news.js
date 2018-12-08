@@ -3,7 +3,7 @@ export default class News {
 	
 	constructor(typeOfRequest, req) {
 		this.req = req;
-		this.typeOfRequest = typeOfRequest
+		this.typeOfRequest = typeOfRequest;
 		
 	}
 	

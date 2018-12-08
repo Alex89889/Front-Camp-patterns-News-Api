@@ -47,7 +47,7 @@ export default class FactoryReguest {
 		let  source = new News(this.typeOfRequest, this.req);
 		source.printSource();
 
-		let news = new News(this.req);
+		let news = new News(this.typeOfRequest,this.req);
 		news.printNews();
 	}
 	
