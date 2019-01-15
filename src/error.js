@@ -1,7 +1,7 @@
 export const Logging = new class {
 
     constructor() {
-        // todo
+        
     }
 
     onerror(errorMessage, url, line) {

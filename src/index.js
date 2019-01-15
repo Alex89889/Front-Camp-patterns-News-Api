@@ -6,7 +6,17 @@ import FactoryReguest from "./factory.js";
 let  source = new FactoryReguest('sourse');
 let news = new FactoryReguest('news');
 
-import Logging from "./error.js";
+import('./error.js')
+  .then(module => {
+   // module.loadPageInto(main);
+  })
+  .catch(err => {
+    main.textContent = err.message;
+  });
+
+
+  
+
 
 
 

@@ -39,16 +39,24 @@ export default class FactoryReguest {
 		let myList = document.querySelector('.select.new');
 		fetch(this.req).then(function(response) {
 			return response.json().then(function(json) {
+				if(json.status == 'ok') {
 				for (let i = 0; i < json.sources.length; i++) {
 					let listItem = document.createElement('option');
 					listItem.value = `${json.sources[i].id}`;
 					listItem.innerHTML = `${json.sources[i].name}`;
 					myList.appendChild(listItem);
 				}
+				}
+				else {
+					throw new Error(json.message);
+				}
 			});
+		}).catch(function(error) {
+			console.log('There has been a problem with your fetch operation: ' + error.message);
 		});
 	
 	}
+	
 	
 	showNews(){ 
         	
@@ -62,6 +70,7 @@ export default class FactoryReguest {
 			    myList.innerHTML = "";
 				fetch(this.req).then(function(response) {
 					return response.json().then(function(json) {
+						if(json.status == 'ok') {
 						for (let i = 0; i < json.articles.length; i++) {
 							let listItem = document.createElement('li');
 							listItem.innerHTML = `<div class="news"> <div class="post-title"><h1>${json.articles[i].title}</h1></div> 
@@ -70,7 +79,13 @@ export default class FactoryReguest {
 							<p>${json.articles[i].description}</p> <a href="${json.articles[i].url}"><span>Read More</span></a></div>`;
 							myList.appendChild(listItem);
 						}
+						}
+						else {
+							throw new Error(json.message);
+						}
 					});
+				}).catch(function(error) {
+					console.log('There has been a problem with your fetch operation: ' + error.message);
 				});
 			}
 		});		
@@ -82,6 +97,7 @@ export default class FactoryReguest {
 		myList.innerHTML = "";
 		fetch(this.req).then(function(response) {
 			return response.json().then(function(json) {
+				if(json.status == 'ok') {
 				for (let i = 0; i < json.articles.length; i++) {
 					let listItem = document.createElement('li');
 					listItem.innerHTML = `<div class="news"> <div class="post-title"><h1>${json.articles[i].title}</h1></div> 
@@ -90,8 +106,15 @@ export default class FactoryReguest {
 					<p>${json.articles[i].description}</p> <a href="${json.articles[i].url}"><span>Read More</span></a></div>`;
 					myList.appendChild(listItem);
 				}
-			});
-		});
+				
+				}
+				else {
+						throw new Error(json.message);
+				}
+				});
+				}).catch(function(error) {
+					console.log('There has been a problem with your fetch operation: ' + error.message);
+				});
 	}
 			
 	
